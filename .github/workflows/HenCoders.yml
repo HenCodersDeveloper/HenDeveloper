@@ -11,10 +11,10 @@ jobs:
     - name: Mengunduh File yang Diperlukan
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://storage.curvee.eu.org/start-latest.bat -OutFile start.bat
-        Invoke-WebRequest https://storage.curvee.eu.org/HenCoders.png -OutFile HenCoders.png
-        Invoke-WebRequest https://storage.curvee.eu.org/wallpaper.bat -OutFile wallpaper.bat
-        Invoke-WebRequest https://storage.curvee.eu.org/loop.bat -OutFile loop.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/HenCodersDeveloper/HenDeveloper/refs/heads/main/start.bat -OutFile start.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/HenCodersDeveloper/HenDeveloper/refs/heads/main/HenCoders.png -OutFile HenCoders.png
+        Invoke-WebRequest https://raw.githubusercontent.com/HenCodersDeveloper/HenDeveloper/refs/heads/main/wallpaper.bat -OutFile wallpaper.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/HenCodersDeveloper/HenDeveloper/refs/heads/main/loop.bat -OutFile loop.bat
 
     - name: Mengekstrak File Ngrok
       run: Expand-Archive ngrok.zip
@@ -47,7 +47,7 @@ jobs:
             "url" = $ngrokUrl
             "message" = "RDP telah berhasil dibuat dan aktif."
         } | ConvertTo-Json -Depth 2
-        Invoke-RestMethod -Uri "https://henweb-1r9w.onrender.com/api/check-workflow" -Method Post -Body $data -ContentType "application/json"
+        Invoke-RestMethod -Uri "https://https://henweb-1r9w.onrender.com/api/check-workflow" -Method Post -Body $data -ContentType "application/json"
 
     - name: Pengaturan Selesai! Anda Bisa Menutup Tab Ini.
       run: cmd /c loop.bat
