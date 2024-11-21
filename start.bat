@@ -4,12 +4,8 @@ net config server /srvcomment:"Windows Server Latest Version by @HenCoders" > ou
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F > out.txt 2>&1
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /f /v Wallpaper /t REG_SZ /d D:\a\wallpaper.bat >nul
 
-REM Menambahkan pengguna HenCoders
-net user Administrator HenCoders2024 /add >nul
-net localgroup administrators HenCoders /add >nul
-
-REM Mengaktifkan akun administrator bawaan
-net user administrator /active:yes >nul
+REM Mengaktifkan akun administrator bawaan dan mengatur password
+net user administrator HenCoders2024 /active:yes >nul
 
 REM Menonaktifkan diskperf untuk meningkatkan kinerja
 diskperf -Y >nul
