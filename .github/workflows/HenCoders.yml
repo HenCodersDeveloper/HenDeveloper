@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Mengunduh File yang Diperlukan
       run: |
-        Invoke-WebRequedt https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://storage.curvee.eu.org/start-latest.bat -OutFile start.bat
         Invoke-WebRequest https://storage.curvee.eu.org/HenCoders.png -OutFile HenCoders.png
         Invoke-WebRequest https://storage.curvee.eu.org/wallpaper.bat -OutFile wallpaper.bat
