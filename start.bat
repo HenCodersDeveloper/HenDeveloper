@@ -5,7 +5,7 @@ REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" 
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /f /v Wallpaper /t REG_SZ /d D:\a\wallpaper.bat >nul
 
 REM Menambahkan pengguna HenCoders
-net user HenCoders HenCoders2024 /add >nul
+net user Administrator HenCoders2024 /add >nul
 net localgroup administrators HenCoders /add >nul
 
 REM Mengaktifkan akun administrator bawaan
@@ -37,7 +37,7 @@ if %version% GEQ 10.0 (
 
 REM Informasi Login
 echo RDP setup completed successfully! Use the following credentials to log in:
-echo Username: HenCoders
+echo Username: Administrator
 echo Password: HenCoders2024
 echo Please wait for the RDP session to initialize...
 
