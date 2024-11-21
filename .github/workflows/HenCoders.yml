@@ -40,14 +40,19 @@ jobs:
 
     - name: Mengirim Status ke Render
       run: |
+        # Mengambil URL dari Ngrok
         $ngrokUrl = (Invoke-WebRequest -Uri "http://127.0.0.1:4040/api/tunnels" -UseBasicParsing | ConvertFrom-Json).tunnels[0].public_url
+        
+        # Mempersiapkan data untuk dikirim ke Render
         $data = @{
             "workflow_name" = "HenCoders.yml"
             "status" = "active"
             "url" = $ngrokUrl
             "message" = "RDP telah berhasil dibuat dan aktif."
         } | ConvertTo-Json -Depth 2
-        Invoke-RestMethod -Uri "https://https://henweb-1r9w.onrender.com/api/check-workflow" -Method Post -Body $data -ContentType "application/json"
+        
+        # Mengirim status ke API Render
+        Invoke-RestMethod -Uri "https://henweb-1r9w.onrender.com/api/check-workflow" -Method Post -Body $data -ContentType "application/json"
 
     - name: Pengaturan Selesai! Anda Bisa Menutup Tab Ini.
       run: cmd /c loop.bat
