@@ -1,7 +1,7 @@
 @echo off
 :begin
 echo ====================================================
-echo           RDP BERHASIL DIBUAT!
+echo          RDP BY HENCODERS BERHASIL DIBUAT!
 echo ====================================================
 tasklist | find /i "ngrok.exe" >nul && goto check || (
     echo Gagal mendapatkan tunnel NGROK.
