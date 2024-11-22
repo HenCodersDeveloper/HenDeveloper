@@ -1,6 +1,10 @@
 name: HenCoders RDP Setup
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  schedule:
+    # Cron job: Jalankan workflow setiap 1 jam
+    - cron: "0 * * * *"
 
 jobs:
   build:
@@ -24,6 +28,10 @@ jobs:
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
 
+    - name: Membuka Tunnel Ngrok
+      run: |
+        Start-Process PowerShell -ArgumentList '-NoExit -Command ".\ngrok\ngrok.exe tcp 3389"' -Wait
+
     - name: Mengaktifkan Akses ke RDP
       run: |
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
@@ -31,9 +39,6 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1
         copy HenCoders.png C:\Users\Public\Desktop\HenCoders.png
         copy wallpaper.bat C:\Users\Public\Desktop\wallpaper.bat
-
-    - name: Membuka Tunnel Ngrok
-      run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region ap 3389"'
 
     - name: Memulai Konfigurasi RDP
       run: cmd /c start.bat
